@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "search": "Buscar",
+    "dashboard": "Panel de Control",
+    "alerts": "Alertas",
+    "logout": "Cerrar Sesión",
+    "login": "Iniciar Sesión",
+    "register": "Registrarse"
+  },
+  "footer": {
+    "about": "Realice un seguimiento de los precios de los productos en varios minoristas y reciba alertas cuando los precios bajen.",
+    "links": "Enlaces Rápidos",
+    "aboutUs": "Acerca de Nosotros",
+    "contact": "Contacto",
+    "privacy": "Política de Privacidad",
+    "social": "Síguenos",
+    "rights": "Todos los derechos reservados."
+  },
+  "landing": {
+    "hero": "Rastrear. Comparar. Ahorrar.",
+    "subtitle": "Monitoree los precios en múltiples minoristas y nunca pierda una oferta",
+    "features": "¿Por Qué Elegir PricePulse?",
+    "feature1": "Seguimiento en Tiempo Real",
+    "feature1Desc": "Obtenga actualizaciones de precios en vivo de múltiples minoristas",
+    "feature2": "Alertas Inteligentes",
+    "feature2Desc": "Establece alertas de precios personalizadas y recibe notificaciones al instante",
+    "feature3": "Ahorra Dinero",
+    "feature3Desc": "Encuentra las mejores ofertas y ahorra en tus compras",
+    "cta": "¿Listo para comenzar a ahorrar?",
+    "getStarted": "Comenzar"
+  },
+  "search": {
+    "placeholder": "Buscar productos...",
+    "button": "Buscar",
+    "title": "Buscar Productos",
+    "loading": "Cargando resultados...",
+    "noResults": "No se encontraron productos"
+  },
+  "product": {
+    "loading": "Cargando detalles del producto...",
+    "currentPrice": "Precio Actual",
+    "priceHistory": "Historial de Precios",
+    "priceTable": "Tabla de Precios",
+    "setAlert": "Establecer Alerta de Precio",
+    "date": "Fecha",
+    "price": "Precio",
+    "seller": "Vendedor"
+  },
+  "alerts": {
+    "title": "Mis Alertas",
+    "noAlerts": "Aún no has creado ninguna alerta",
+    "createNew": "Crear Nueva Alerta",
+    "setAlert": "Establecer Alerta de Precio",
+    "targetPrice": "Precio Objetivo",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "active": "Activo",
+    "inactive": "Inactivo"
+  },
+  "dashboard": {
+    "title": "Panel de Control",
+    "welcome": "Bienvenido",
+    "description": "Administra tus alertas de seguimiento de precios y ve tus ahorros",
+    "alerts": "Alertas Activas",
+    "tracked": "Productos Rastreados",
+    "saved": "Total Ahorrado",
+    "loginRequired": "Por favor inicia sesión para ver tu panel de control"
+  },
+  "auth": {
+    "login": "Iniciar Sesión",
+    "register": "Registrarse",
+    "email": "Correo Electrónico",
+    "password": "Contraseña",
+    "name": "Nombre Completo"
+  },
+  "sidebar": {
+    "dashboard": "Panel de Control",
+    "search": "Buscar",
+    "alerts": "Alertas"
+  }
+}

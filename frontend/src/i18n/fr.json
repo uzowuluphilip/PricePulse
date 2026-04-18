@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "search": "Rechercher",
+    "dashboard": "Tableau de Bord",
+    "alerts": "Alertes",
+    "logout": "Déconnexion",
+    "login": "Connexion",
+    "register": "S'inscrire"
+  },
+  "footer": {
+    "about": "Suivez les prix des produits chez plusieurs détaillants et recevez des alertes lorsque les prix baissent.",
+    "links": "Liens Rapides",
+    "aboutUs": "À Propos",
+    "contact": "Contact",
+    "privacy": "Politique de Confidentialité",
+    "social": "Nous Suivre",
+    "rights": "Tous droits réservés."
+  },
+  "landing": {
+    "hero": "Suivre. Comparer. Économiser.",
+    "subtitle": "Surveillez les prix dans plusieurs magasins et ne manquez aucune offre",
+    "features": "Pourquoi Choisir PricePulse?",
+    "feature1": "Suivi en Temps Réel",
+    "feature1Desc": "Obtenez des mises à jour de prix en direct de plusieurs détaillants",
+    "feature2": "Alertes Intelligentes",
+    "feature2Desc": "Définissez des alertes de prix personnalisées et soyez notifié instantanément",
+    "feature3": "Économisez de l'Argent",
+    "feature3Desc": "Trouvez les meilleures offres et économisez sur vos achats",
+    "cta": "Prêt à commencer à économiser?",
+    "getStarted": "Commencer"
+  },
+  "search": {
+    "placeholder": "Rechercher des produits...",
+    "button": "Rechercher",
+    "title": "Rechercher des Produits",
+    "loading": "Chargement des résultats...",
+    "noResults": "Aucun produit trouvé"
+  },
+  "product": {
+    "loading": "Chargement des détails du produit...",
+    "currentPrice": "Prix Actuel",
+    "priceHistory": "Historique des Prix",
+    "priceTable": "Tableau des Prix",
+    "setAlert": "Définir une Alerte de Prix",
+    "date": "Date",
+    "price": "Prix",
+    "seller": "Vendeur"
+  },
+  "alerts": {
+    "title": "Mes Alertes",
+    "noAlerts": "Vous n'avez pas encore créé d'alertes",
+    "createNew": "Créer une Nouvelle Alerte",
+    "setAlert": "Définir une Alerte de Prix",
+    "targetPrice": "Prix Cible",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "active": "Actif",
+    "inactive": "Inactif"
+  },
+  "dashboard": {
+    "title": "Tableau de Bord",
+    "welcome": "Bienvenue",
+    "description": "Gérez vos alertes de suivi des prix et consultez vos économies",
+    "alerts": "Alertes Actives",
+    "tracked": "Produits Suivis",
+    "saved": "Total Économisé",
+    "loginRequired": "Veuillez vous connecter pour voir votre tableau de bord"
+  },
+  "auth": {
+    "login": "Connexion",
+    "register": "S'inscrire",
+    "email": "Email",
+    "password": "Mot de Passe",
+    "name": "Nom Complet"
+  },
+  "sidebar": {
+    "dashboard": "Tableau de Bord",
+    "search": "Rechercher",
+    "alerts": "Alertes"
+  }
+}

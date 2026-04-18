@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "search": "Search",
+    "dashboard": "Dashboard",
+    "alerts": "Alerts",
+    "logout": "Logout",
+    "login": "Login",
+    "register": "Register"
+  },
+  "footer": {
+    "about": "Track product prices across multiple retailers and get alerts when prices drop.",
+    "links": "Quick Links",
+    "aboutUs": "About Us",
+    "contact": "Contact",
+    "privacy": "Privacy Policy",
+    "social": "Follow Us",
+    "rights": "All rights reserved."
+  },
+  "landing": {
+    "hero": "Track. Compare. Save.",
+    "subtitle": "Monitor prices across retailers and never miss a deal",
+    "features": "Why Choose PricePulse?",
+    "feature1": "Real-Time Tracking",
+    "feature1Desc": "Get live price updates from multiple retailers",
+    "feature2": "Smart Alerts",
+    "feature2Desc": "Set custom price alerts and get notified instantly",
+    "feature3": "Save Money",
+    "feature3Desc": "Find the best deals and save on your purchases",
+    "cta": "Ready to start saving?",
+    "getStarted": "Get Started"
+  },
+  "search": {
+    "placeholder": "Search for products...",
+    "button": "Search",
+    "title": "Search Products",
+    "loading": "Loading results...",
+    "noResults": "No products found"
+  },
+  "product": {
+    "loading": "Loading product details...",
+    "currentPrice": "Current Price",
+    "priceHistory": "Price History",
+    "priceTable": "Price Table",
+    "setAlert": "Set Price Alert",
+    "date": "Date",
+    "price": "Price",
+    "seller": "Seller"
+  },
+  "alerts": {
+    "title": "My Alerts",
+    "noAlerts": "You haven't created any alerts yet",
+    "createNew": "Create New Alert",
+    "setAlert": "Set Price Alert",
+    "targetPrice": "Target Price",
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "active": "Active",
+    "inactive": "Inactive"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome",
+    "description": "Manage your price tracking alerts and view your savings",
+    "alerts": "Active Alerts",
+    "tracked": "Tracked Products",
+    "saved": "Total Saved",
+    "loginRequired": "Please login to view your dashboard"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "name": "Full Name"
+  },
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "search": "Search",
+    "alerts": "Alerts"
+  }
+}
