@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Menu, X, Zap, TrendingDown, CheckCircle, Globe, Sparkles, Smartphone, Brain, AlertCircle, Users, Cpu, Lock, Twitter, Github, Linkedin } from 'lucide-react';
 
 export default function Landing() {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [language, setLanguage] = useState('en');
@@ -152,10 +154,16 @@ export default function Landing() {
                 <option value="es">Español</option>
               </select>
 
-              <button className="text-sm hover:text-primary transition-colors">
+              <button
+                onClick={() => navigate('/login')}
+                className="text-sm hover:text-primary transition-colors"
+              >
                 Log In
               </button>
-              <button className="bg-primary hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-all hover:shadow-lg hover:shadow-primary/50">
+              <button
+                onClick={() => navigate('/register')}
+                className="bg-primary hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-all hover:shadow-lg hover:shadow-primary/50"
+              >
                 Get Started
               </button>
             </div>
@@ -173,7 +181,10 @@ export default function Landing() {
               <a href="#pricing" className="block py-2 hover:text-primary transition-colors">
                 Pricing
               </a>
-              <button className="w-full mt-4 bg-primary hover:bg-blue-700 text-white py-2 rounded-lg font-medium transition-all">
+              <button
+                onClick={() => navigate('/register')}
+                className="w-full mt-4 bg-primary hover:bg-blue-700 text-white py-2 rounded-lg font-medium transition-all"
+              >
                 Get Started
               </button>
             </div>
@@ -208,10 +219,19 @@ export default function Landing() {
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-primary hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-all hover:shadow-lg hover:shadow-primary/50 hover:scale-105">
+              <button
+                onClick={() => navigate('/register')}
+                className="bg-primary hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-all hover:shadow-lg hover:shadow-primary/50 hover:scale-105"
+              >
                 Start Tracking Free
               </button>
-              <button className="border-2 border-primary text-primary hover:bg-primary/10 px-8 py-4 rounded-lg font-semibold transition-all hover:scale-105">
+              <button
+                onClick={() => {
+                  const element = document.getElementById('how');
+                  element?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="border-2 border-primary text-primary hover:bg-primary/10 px-8 py-4 rounded-lg font-semibold transition-all hover:scale-105"
+              >
                 See How It Works
               </button>
             </div>
@@ -409,6 +429,14 @@ export default function Landing() {
 
                 {/* Button */}
                 <button
+                  onClick={() => {
+                    if (plan.cta === 'Contact Us') {
+                      const element = document.getElementById('contact');
+                      element?.scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                      navigate('/register');
+                    }
+                  }}
                   className={`w-full py-3 rounded-lg font-semibold transition-all hover:scale-105 ${
                     plan.popular
                       ? 'bg-primary hover:bg-blue-700 text-white hover:shadow-lg hover:shadow-primary/50'

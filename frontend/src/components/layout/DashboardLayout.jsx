@@ -26,9 +26,9 @@ export default function DashboardLayout({ children }) {
 
   const navItems = [
     { label: 'Dashboard', icon: Home, path: '/dashboard', badge: null },
-    { label: 'Price Alerts', icon: AlertCircle, path: '/dashboard/alerts', badge: 3 },
-    { label: 'Tracked Items', icon: TrendingDown, path: '/dashboard/tracked', badge: 12 },
-    { label: 'Saved Prices', icon: CheckCircle2, path: '/dashboard/saved', badge: null },
+    { label: 'Price Alerts', icon: AlertCircle, path: '/alerts', badge: 3 },
+    { label: 'Tracked Items', icon: TrendingDown, path: '/tracked', badge: 12 },
+    { label: 'Search Products', icon: Search, path: '/search', badge: null },
   ];
 
   const handleLogout = () => {
@@ -106,7 +106,7 @@ export default function DashboardLayout({ children }) {
               Upgrade Pro
             </button>
             <Link
-              to="/dashboard/settings"
+              to="/settings"
               className="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800/50 transition-all"
             >
               <Settings className="w-5 h-5" />
@@ -176,7 +176,7 @@ export default function DashboardLayout({ children }) {
                       <p className="text-xs text-gray-400">{user?.email}</p>
                     </div>
                     <Link
-                      to="/dashboard/settings"
+                      to="/settings"
                       className="flex items-center gap-2 px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-800/50"
                       onClick={() => setUserMenuOpen(false)}
                     >
