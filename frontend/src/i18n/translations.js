@@ -1,4 +1,5 @@
-import { useLanguage } from '../context/LanguageContext';
+import { useContext } from 'react';
+import { LanguageContext } from '../context/LanguageContext';
 
 export const translations = {
   en: {
@@ -450,9 +451,22 @@ export const translations = {
 };
 
 export function useTranslation() {
-  const { currentLang } = useLanguage();
+  const context = useContext(LanguageContext);
+
+  if (!context) {
+    console.error('useTranslation must be used inside LanguageProvider');
+    return { t: (key) => key, currentLang: 'en' };
+  }
+
+  const { currentLang } = context;
+
   const t = (key) => {
-    return translations[currentLang]?.[key] || translations['en'][key] || key;
+    const result =
+      translations[currentLang]?.[key] ||
+      translations['en']?.[key] ||
+      key;
+    return result;
   };
-  return { t };
+
+  return { t, currentLang };
 }

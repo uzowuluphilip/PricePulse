@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from 'react';
 
-const LanguageContext = createContext();
+export const LanguageContext = createContext();
 
 export const LANGUAGES = [
   { code: 'en', name: 'English', flag: '🇺🇸' },
@@ -14,10 +14,13 @@ export const LANGUAGES = [
 ];
 
 export function LanguageProvider({ children }) {
-  const [currentLang, setCurrentLang] = useState('en');
+  const [currentLang, setCurrentLang] = useState(
+    localStorage.getItem('pricepulse_lang') || 'en'
+  );
 
   const switchLanguage = (code) => {
     setCurrentLang(code);
+    localStorage.setItem('pricepulse_lang', code);
     document.documentElement.dir = code === 'ar' ? 'rtl' : 'ltr';
   };
 

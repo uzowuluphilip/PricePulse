@@ -12,6 +12,14 @@ export default function Landing() {
   const { t } = useTranslation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [forceUpdateCount, setForceUpdateCount] = useState(0);
+
+  // Force re-render when language changes
+  useEffect(() => {
+    setForceUpdateCount(prev => prev + 1);
+    console.log('Language changed to:', currentLang);
+    console.log('Test translation:', t('heroTitle'));
+  }, [currentLang, t]);
 
   // Helper functions
   const scrollToSection = (sectionId) => {
