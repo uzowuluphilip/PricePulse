@@ -1,12 +1,36 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 import { Menu, X, Zap, TrendingDown, CheckCircle, Globe, Sparkles, Smartphone, Brain, AlertCircle, Users, Cpu, Lock, Twitter, Github, Linkedin } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
+import { useTranslation } from '../i18n/translations';
+import LanguageSwitcher from '../components/ui/LanguageSwitcher';
 
 export default function Landing() {
   const navigate = useNavigate();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { currentLang } = useLanguage();
+  const { t } = useTranslation();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [language, setLanguage] = useState('en');
+
+  // Helper functions
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const comingSoon = () => {
+    toast('Coming soon!', {
+      icon: '🚀',
+      style: {
+        background: '#1a1a1a',
+        color: '#fff',
+        border: '1px solid #333'
+      }
+    });
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -123,69 +147,106 @@ export default function Landing() {
             {/* Hamburger Menu */}
             <button
               className="md:hidden"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">
-              <a href="#features" className="hover:text-primary transition-colors">
-                Features
-              </a>
-              <a href="#how" className="hover:text-primary transition-colors">
-                How It Works
-              </a>
-              <a href="#pricing" className="hover:text-primary transition-colors">
-                Pricing
-              </a>
+              <button
+                onClick={() => scrollToSection('features')}
+                className="text-gray-300 hover:text-primary transition-colors cursor-pointer"
+              >
+                {t('features') || 'Features'}
+              </button>
+              <button
+                onClick={() => scrollToSection('how-it-works')}
+                className="text-gray-300 hover:text-primary transition-colors cursor-pointer"
+              >
+                {t('howItWorks') || 'How It Works'}
+              </button>
+              <button
+                onClick={() => scrollToSection('pricing')}
+                className="text-gray-300 hover:text-primary transition-colors cursor-pointer"
+              >
+                {t('pricing') || 'Pricing'}
+              </button>
             </div>
 
             {/* Right Section */}
             <div className="hidden md:flex items-center gap-4">
-              {/* Language Switcher */}
-              <select
-                value={language}
-                onChange={(e) => setLanguage(e.target.value)}
-                className="bg-dark-card text-sm px-3 py-2 rounded border border-gray-700 cursor-pointer hover:border-primary transition-colors"
-              >
-                <option value="en">English</option>
-                <option value="fr">Français</option>
-                <option value="es">Español</option>
-              </select>
-
+              <LanguageSwitcher />
               <button
                 onClick={() => navigate('/login')}
                 className="text-sm hover:text-primary transition-colors"
               >
-                Log In
+                {t('login') || 'Log In'}
               </button>
               <button
                 onClick={() => navigate('/register')}
                 className="bg-primary hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-all hover:shadow-lg hover:shadow-primary/50"
               >
-                Get Started
+                {t('getStarted') || 'Get Started'}
               </button>
             </div>
           </div>
 
           {/* Mobile Menu */}
-          {isMenuOpen && (
-            <div className="md:hidden pb-4 border-t border-gray-800">
-              <a href="#features" className="block py-2 hover:text-primary transition-colors">
-                Features
-              </a>
-              <a href="#how" className="block py-2 hover:text-primary transition-colors">
-                How It Works
-              </a>
-              <a href="#pricing" className="block py-2 hover:text-primary transition-colors">
-                Pricing
-              </a>
+          {mobileMenuOpen && (
+            <div className="md:hidden bg-dark-bg border-t border-gray-800 px-4 py-4 flex flex-col gap-4">
+              {/* Nav links */}
               <button
-                onClick={() => navigate('/register')}
-                className="w-full mt-4 bg-primary hover:bg-blue-700 text-white py-2 rounded-lg font-medium transition-all"
+                onClick={() => {
+                  scrollToSection('features');
+                  setMobileMenuOpen(false);
+                }}
+                className="text-gray-300 text-left py-2 border-b border-gray-800 hover:text-primary transition-colors"
               >
-                Get Started
+                {t('features') || 'Features'}
+              </button>
+              <button
+                onClick={() => {
+                  scrollToSection('how-it-works');
+                  setMobileMenuOpen(false);
+                }}
+                className="text-gray-300 text-left py-2 border-b border-gray-800 hover:text-primary transition-colors"
+              >
+                {t('howItWorks') || 'How It Works'}
+              </button>
+              <button
+                onClick={() => {
+                  scrollToSection('pricing');
+                  setMobileMenuOpen(false);
+                }}
+                className="text-gray-300 text-left py-2 border-b border-gray-800 hover:text-primary transition-colors"
+              >
+                {t('pricing') || 'Pricing'}
+              </button>
+
+              {/* Language switcher */}
+              <div className="py-2 border-b border-gray-800">
+                <LanguageSwitcher />
+              </div>
+
+              {/* Login and Register buttons */}
+              <button
+                onClick={() => {
+                  navigate('/login');
+                  setMobileMenuOpen(false);
+                }}
+                className="w-full py-3 text-center text-white border border-gray-700 rounded-xl hover:border-gray-500 transition-colors"
+              >
+                {t('login') || 'Log In'}
+              </button>
+              <button
+                onClick={() => {
+                  navigate('/register');
+                  setMobileMenuOpen(false);
+                }}
+                className="w-full py-3 text-center text-white bg-blue-600 rounded-xl hover:bg-blue-700 transition-colors font-medium"
+              >
+                {t('getStarted') || 'Get Started Free'}
               </button>
             </div>
           )}
@@ -193,7 +254,7 @@ export default function Landing() {
       </nav>
 
       {/* ===== HERO SECTION ===== */}
-      <section className="relative min-h-screen flex items-center pt-20 px-4 overflow-hidden">
+      <section id="hero" className="relative min-h-screen flex items-center pt-20 px-4 overflow-hidden">
         {/* Animated Background Gradient */}
         <div className="absolute inset-0 -z-10">
           <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-primary opacity-5 rounded-full blur-3xl"></div>
@@ -205,15 +266,13 @@ export default function Landing() {
           <div className="space-y-8 animate-fade-in">
             <div>
               <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
-                Never Overpay{' '}
+                {t('heroTitle') || 'Never Overpay'} {' '}
                 <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
-                  Again.
+                  {t('heroTitleHighlight') || 'Again.'}
                 </span>
               </h1>
               <p className="text-lg text-gray-400 leading-relaxed">
-                Track prices across hundreds of stores. Get alerted the moment prices drop.
-                <br />
-                <span className="text-primary font-semibold">Powered by AI.</span>
+                {t('heroSubtitle') || 'Track prices across hundreds of stores. Get alerted the moment prices drop. Powered by AI.'}
               </p>
             </div>
 
@@ -223,16 +282,15 @@ export default function Landing() {
                 onClick={() => navigate('/register')}
                 className="bg-primary hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-all hover:shadow-lg hover:shadow-primary/50 hover:scale-105"
               >
-                Start Tracking Free
+                {t('startTracking') || 'Start Tracking Free'}
               </button>
               <button
                 onClick={() => {
-                  const element = document.getElementById('how');
-                  element?.scrollIntoView({ behavior: 'smooth' });
+                  scrollToSection('how-it-works');
                 }}
                 className="border-2 border-primary text-primary hover:bg-primary/10 px-8 py-4 rounded-lg font-semibold transition-all hover:scale-105"
               >
-                See How It Works
+                {t('seeHow') || 'See How It Works'}
               </button>
             </div>
 
@@ -302,12 +360,12 @@ export default function Landing() {
       </section>
 
       {/* ===== HOW IT WORKS ===== */}
-      <section id="how" className="py-20 px-4 relative">
+      <section id="how-it-works" className="py-20 px-4 relative">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-bold mb-6">How PricePulse Works</h2>
+            <h2 className="text-5xl md:text-6xl font-bold mb-6">{t('howItWorksTitle') || 'How PricePulse Works'}</h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Three simple steps to start saving money on everything you buy
+              {t('howItWorksSubtitle') || 'Three simple steps to start saving money on everything you buy'}
             </p>
           </div>
 
@@ -358,10 +416,10 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-5xl md:text-6xl font-bold mb-6">
-              Everything You Need To Save Money
+              {t('featuresTitle') || 'Everything You Need To Save Money'}
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Packed with powerful features to help you find the best deals
+              {t('featuresSubtitle') || 'Packed with powerful features to help you find the best deals'}
             </p>
           </div>
 
@@ -385,9 +443,9 @@ export default function Landing() {
       <section id="pricing" className="py-20 px-4 relative">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-bold mb-6">Simple Pricing</h2>
+            <h2 className="text-5xl md:text-6xl font-bold mb-6">{t('pricingTitle') || 'Simple Pricing'}</h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Choose the plan that fits your needs. Always transparent, no hidden fees.
+              {t('pricingSubtitle') || 'Choose the plan that fits your needs. Always transparent, no hidden fees.'}
             </p>
           </div>
 
@@ -469,10 +527,10 @@ export default function Landing() {
             <div>
               <h4 className="font-bold mb-4">Product</h4>
               <ul className="space-y-2 text-gray-400 text-sm">
-                <li><a href="#" className="hover:text-primary transition-colors">Features</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Pricing</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Security</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Status</a></li>
+                <li><button onClick={() => scrollToSection('features')} className="hover:text-primary transition-colors cursor-pointer">Features</button></li>
+                <li><button onClick={() => scrollToSection('pricing')} className="hover:text-primary transition-colors cursor-pointer">Pricing</button></li>
+                <li><button onClick={comingSoon} className="hover:text-primary transition-colors cursor-pointer">Security</button></li>
+                <li><button onClick={comingSoon} className="hover:text-primary transition-colors cursor-pointer">Status</button></li>
               </ul>
             </div>
 
@@ -480,10 +538,10 @@ export default function Landing() {
             <div>
               <h4 className="font-bold mb-4">Company</h4>
               <ul className="space-y-2 text-gray-400 text-sm">
-                <li><a href="#" className="hover:text-primary transition-colors">About</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Blog</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Careers</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Contact</a></li>
+                <li><button onClick={comingSoon} className="hover:text-primary transition-colors cursor-pointer">About</button></li>
+                <li><button onClick={comingSoon} className="hover:text-primary transition-colors cursor-pointer">Blog</button></li>
+                <li><button onClick={comingSoon} className="hover:text-primary transition-colors cursor-pointer">Careers</button></li>
+                <li><button onClick={comingSoon} className="hover:text-primary transition-colors cursor-pointer">Contact</button></li>
               </ul>
             </div>
 
@@ -491,10 +549,10 @@ export default function Landing() {
             <div>
               <h4 className="font-bold mb-4">Support</h4>
               <ul className="space-y-2 text-gray-400 text-sm">
-                <li><a href="#" className="hover:text-primary transition-colors">Help Center</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Documentation</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Privacy</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Terms</a></li>
+                <li><button onClick={comingSoon} className="hover:text-primary transition-colors cursor-pointer">Help Center</button></li>
+                <li><button onClick={comingSoon} className="hover:text-primary transition-colors cursor-pointer">Documentation</button></li>
+                <li><button onClick={comingSoon} className="hover:text-primary transition-colors cursor-pointer">Privacy</button></li>
+                <li><button onClick={comingSoon} className="hover:text-primary transition-colors cursor-pointer">Terms</button></li>
               </ul>
             </div>
           </div>
